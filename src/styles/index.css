@@ -1,0 +1,5 @@
+/* Dev/Storybook entry; consumers import @kpi/ui/styles.css (theme only) after tailwindcss. */
+@import 'tailwindcss';
+@import './theme.css';
+
+@source '../';
