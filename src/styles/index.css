@@ -1,4 +1,4 @@
-/* Dev/Storybook entry; consumers import @kpi/ui/styles.css (theme only) after tailwindcss. */
+/* Dev/Storybook entry; consumers import @kpi-ua/ui/styles.css (theme only) after tailwindcss. */
 @import 'tailwindcss';
 @import './theme.css';
 
