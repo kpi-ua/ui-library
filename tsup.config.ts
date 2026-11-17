@@ -1,3 +1,4 @@
+import svgr from 'esbuild-plugin-svgr';
 import { defineConfig, type Options } from 'tsup';
 
 const shared: Options = {
@@ -13,6 +14,7 @@ export default defineConfig([
     splitting: true,
     clean: true,
     banner: { js: '"use client";' },
+    esbuildPlugins: [svgr({ icon: true, jsxRuntime: 'automatic' })],
   },
   {
     ...shared,

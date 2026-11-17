@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Badge } from './badge';
 
+const variantOptions = ['red', 'pink', 'purple', 'orange', 'green', 'blue', 'gray'] as const;
+
 const meta = {
   title: 'Primitives/Badge',
   component: Badge,
@@ -8,7 +10,7 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['default', 'secondary', 'destructive', 'outline', 'ghost', 'link'],
+      options: variantOptions,
     },
   },
 } satisfies Meta<typeof Badge>;
@@ -21,7 +23,7 @@ export const Default: Story = {};
 export const Variants: Story = {
   render: (args) => (
     <div className="flex flex-wrap items-center gap-3">
-      {(['default', 'secondary', 'destructive', 'outline'] as const).map((v) => (
+      {variantOptions.map((v) => (
         <Badge key={v} {...args} variant={v}>
           {v}
         </Badge>

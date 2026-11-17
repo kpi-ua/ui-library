@@ -2,6 +2,7 @@ import { fileURLToPath } from 'node:url';
 import type { StorybookConfig } from '@storybook/react-vite';
 import tailwindcss from '@tailwindcss/vite';
 import { mergeConfig } from 'vite';
+import svgr from 'vite-plugin-svgr';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(ts|tsx)', '../src/**/*.mdx'],
@@ -9,7 +10,10 @@ const config: StorybookConfig = {
   framework: '@storybook/react-vite',
   viteFinal: (viteConfig) =>
     mergeConfig(viteConfig, {
-      plugins: [tailwindcss()],
+      plugins: [
+        tailwindcss(),
+        svgr({ include: '**/*.svg', svgrOptions: { icon: true, jsxRuntime: 'automatic' } }),
+      ],
       resolve: { alias: { '@': fileURLToPath(new URL('../src', import.meta.url)) } },
     }),
 };

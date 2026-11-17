@@ -17,7 +17,6 @@ const preview: Preview = {
         icon: 'circlehollow',
         items: [
           { value: 'light', title: 'Light' },
-          { value: 'dark', title: 'Dark' },
         ],
         dynamicTitle: true,
       },

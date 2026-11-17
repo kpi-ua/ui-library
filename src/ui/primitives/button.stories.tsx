@@ -1,5 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from './button';
+import WarningCircle from '@/icons/WarningCircle.svg';
+import SpinnerGap from '@/icons/SpinnerGap.svg';
+
+const variantOptions = ['primary', 'black', 'warning', 'secondary', 'tertiary', 'destructive'] as const;
+const sizeOptions = ['sm', 'md', 'lg', 'xl'] as const;
 
 const meta = {
   title: 'Primitives/Button',
@@ -8,11 +13,11 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link'],
+      options: variantOptions,
     },
     size: {
       control: 'select',
-      options: ['default', 'xs', 'sm', 'lg', 'icon', 'icon-xs', 'icon-sm', 'icon-lg'],
+      options: sizeOptions,
     },
   },
 } satisfies Meta<typeof Button>;
@@ -25,9 +30,33 @@ export const Default: Story = {};
 export const Variants: Story = {
   render: (args) => (
     <div className="flex flex-wrap items-center gap-3">
-      {(['default', 'destructive', 'outline', 'secondary', 'ghost', 'link'] as const).map((v) => (
+      {variantOptions.map((v) => (
         <Button key={v} {...args} variant={v}>
           {v}
+        </Button>
+      ))}
+    </div>
+  ),
+};
+
+export const IconLeft: Story = {
+  render: (args) => (
+    <div className="flex flex-wrap items-center gap-3">
+      {variantOptions.map((v) => (
+        <Button key={v} {...args} variant={v}>
+         <WarningCircle /> {v}
+        </Button>
+      ))}
+    </div>
+  ),
+};
+
+export const IconRight: Story = {
+  render: (args) => (
+    <div className="flex flex-wrap items-center gap-3">
+      {variantOptions.map((v) => (
+        <Button key={v} {...args} variant={v}>
+        {v} <WarningCircle />
         </Button>
       ))}
     </div>
@@ -37,13 +66,48 @@ export const Variants: Story = {
 export const Sizes: Story = {
   render: (args) => (
     <div className="flex flex-wrap items-center gap-3">
-      {(['xs', 'sm', 'default', 'lg'] as const).map((s) => (
+      {sizeOptions.map((s) => (
         <Button key={s} {...args} size={s}>
-          {s}
+          Button {s.toUpperCase()}
         </Button>
       ))}
     </div>
   ),
 };
 
-export const Disabled: Story = { args: { disabled: true } };
+export const IconSizes: Story = {
+  render: (args) => (
+    <div className="flex flex-wrap items-center gap-3">
+      {sizeOptions.map((s) => (
+        <Button key={s} {...args} size={s}>
+          <WarningCircle /> Button {s.toUpperCase()}
+        </Button>
+      ))}
+    </div>
+  ),
+};
+
+export const Disabled: Story = {
+  render: (args) => (
+    <div className="flex flex-wrap items-center gap-3">
+      {variantOptions.map((v) => (
+        <Button key={v} {...args} variant={v} disabled>
+          {v}
+        </Button>
+      ))}
+    </div>
+  ),
+};
+
+export const Loading: Story = {
+  render: (args) => (
+    <div className="flex flex-wrap items-center gap-3">
+      {variantOptions.map((v) => (
+        <Button key={v} {...args} variant={v} disabled>
+          <SpinnerGap /> {v}
+        </Button>
+      ))}
+    </div>
+  ),
+};
+
