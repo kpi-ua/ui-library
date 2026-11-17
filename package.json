@@ -1,7 +1,7 @@
 {
   "name": "@kpi-ua/ui",
   "version": "0.0.1",
-  "description": "Shared UI components, Tailwind theme, hooks and auth helpers for KPI apps",
+  "description": "Shared UI components, Tailwind theme, hooks and auth helpers for Igor Sikorsky Kyiv Polytechnic Institute apps",
   "private": false,
   "type": "module",
   "packageManager": "pnpm@12.18.0",

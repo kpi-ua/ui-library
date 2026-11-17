@@ -4,7 +4,7 @@ import { create } from 'storybook/theming/create';
 addons.setConfig({
   theme: create({
     base: 'light',
-    brandTitle: 'KPI UI Kit',
+    brandTitle: 'Igor Sikorsky Kyiv Polytechnic Institute UI Kit',
     brandUrl: 'https://github.com/kpi-ua/ui-library',
     brandTarget: '_blank',
   }),
