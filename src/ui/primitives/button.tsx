@@ -4,41 +4,51 @@ import { cn } from '@/lib/utils';
 import { Slot } from 'radix-ui';
 
 const buttonVariants = cva(
-  "inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  'inline-flex cursor-pointer shadow-xs items-center justify-center gap-2 whitespace-nowrap rounded-sm text-sm font-semibold border border-solid border-transparent ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 [&_svg]:shrink-0',
   {
     variants: {
       variant: {
-        default: 'bg-primary text-primary-foreground hover:bg-primary/90',
+        primary:
+          'bg-brand-600 text-primary-foreground! enabled:hover:bg-brand-700 active:bg-brand-700 active:outline-brand-900 disabled:opacity-40',
+        black:
+          'bg-basic-black text-basic-white! enabled:hover:bg-neutral-800 active:bg-neutral-900 disabled:opacity-40',
+        warning:
+          'bg-status-warning-500 text-basic-white! enabled:hover:bg-status-warning-400 active:bg-status-warning-600 disabled:opacity-40',
+        secondary:
+          'bg-basic-white text-gray-700 border-gray-300 enabled:hover:bg-gray-50 disabled:bg-basic-white disabled:border-gray-200 disabled:text-gray-400',
+        tertiary:
+          'text-neutral-600 enabled:hover:bg-neutral-50 enabled:hover:!text-neutral-900 active:text-neutral-900 active:bg-transparent disabled:text-neutral-400 shadow-none',
         destructive:
-          'bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40',
-        outline:
-          'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50',
-        secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-        ghost: 'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
-        link: 'text-primary underline-offset-4 hover:underline',
+          'bg-status-error-600! text-primary-foreground! enabled:hover:bg-status-error-700! disabled:opacity-40',
       },
       size: {
-        default: 'h-9 px-4 py-2 has-[>svg]:px-3',
-        xs: "h-6 gap-1 rounded-md px-2 text-xs has-[>svg]:px-1.5 [&_svg:not([class*='size-'])]:size-3",
-        sm: 'h-8 gap-1.5 rounded-md px-3 has-[>svg]:px-2.5',
-        lg: 'h-10 rounded-md px-6 has-[>svg]:px-4',
-        icon: 'size-9',
-        'icon-xs': "size-6 rounded-md [&_svg:not([class*='size-'])]:size-3",
-        'icon-sm': 'size-8',
-        'icon-lg': 'size-10',
+        sm: 'py-[8px] px-[12px] text-sm [&_svg]:size-[16px] leading-xs',
+        md: 'py-[10px] px-[14px] text-base [&_svg]:size-[20px] leading-base',
+        lg: 'py-[10px] px-[18px] text-base [&_svg]:size-[24px] leading-lg',
+        xl: 'py-[12px] px-[18px] text-base [&_svg]:size-[24px] leading-lg',
+        // icon: 'p-[10px] [&_svg]:size-[16px]',
       },
     },
     defaultVariants: {
-      variant: 'default',
-      size: 'default',
+      variant: 'primary',
+      size: 'md',
     },
   },
 );
 
+type IconPosition = 'start' | 'end';
+
+export interface ButtonProps extends React.ComponentProps<'button'>, VariantProps<typeof buttonVariants> {
+  asChild?: boolean;
+  loading?: boolean;
+  icon?: React.ReactNode;
+  iconPosition?: IconPosition;
+}
+
 function Button({
   className,
-  variant = 'default',
-  size = 'default',
+  variant = "primary",
+  size = "md",
   asChild = false,
   ...props
 }: React.ComponentProps<'button'> &

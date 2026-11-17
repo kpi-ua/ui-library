@@ -1,0 +1,34 @@
+[14:43:30.400] [INFO] storybook v10.6.7
+[14:43:31.208] [DEBUG] Getting package.json info for /Users/ai/Documents/Projects/KPI/ui-library/package.json...
+[14:43:31.323] [DEBUG] Could not determine @babel/preset-env version in use. In case of runtime errors with @babel/preset-env, you may need to set the babelRemoveBugfixes feature flag in your `main.ts` file.
+[14:43:31.451] [INFO] Starting...
+[14:43:31.462] [DEBUG] readDependencyManifest: could not resolve "tw-animate-css"
+[14:43:31.484] [WARN] No story files found for the specified pattern: [34msrc/**/*.mdx[39m
+[14:43:31.590] [DEBUG] Starting preview..
+[14:43:31.622] [WARN] 🚨 Unable to index ./src/ui/typography/description.stories.tsx,./src/ui/typography/typography.stories.tsx:
+  Error: Duplicate stories with id: typography-description--under-heading
+    at _StoryIndexGenerator.chooseDuplicate (file:///Users/ai/Documents/Projects/KPI/ui-library/node_modules/.pnpm/storybook@10.6.7_@types+react@19.3.0_prettier@3.10.1_react@19.3.1/node_modules/storybook/dist/core-server/index.js:17001:13)
+    at file:///Users/ai/Documents/Projects/KPI/ui-library/node_modules/.pnpm/storybook@10.6.7_@types+react@19.3.0_prettier@3.10.1_react@19.3.1/node_modules/storybook/dist/core-server/index.js:17060:52
+    at Array.forEach (<anonymous>)
+    at _StoryIndexGenerator.getIndexAndStats (file:///Users/ai/Documents/Projects/KPI/ui-library/node_modules/.pnpm/storybook@10.6.7_@types+react@19.3.0_prettier@3.10.1_react@19.3.1/node_modules/storybook/dist/core-server/index.js:17057:23)
+    at async _StoryIndexGenerator.getIndex (file:///Users/ai/Documents/Projects/KPI/ui-library/node_modules/.pnpm/storybook@10.6.7_@types+react@19.3.0_prettier@3.10.1_react@19.3.1/node_modules/storybook/dist/core-server/index.js:17044:13)
+    at async BasicMinimalPluginContext.config (file:///Users/ai/Documents/Projects/KPI/ui-library/node_modules/.pnpm/@storybook+builder-vite@10.6.7_storybook@10.6.7_@types+react@19.3.0_prettier@3.10.1_rea_1fb2def657602e076cd2ee1988311616/node_modules/@storybook/builder-vite/dist/_node-chunks/chunk-UEDSVI3A.js:188:19)
+    at async runConfigHook (file:///Users/ai/Documents/Projects/KPI/ui-library/node_modules/.pnpm/vite@8.3.8_@types+node@26.6.6_esbuild@0.25.12_jiti@2.7.0_yaml@2.9.1/node_modules/vite/dist/node/chunks/node.js:38201:15)
+    at async resolveConfig (file:///Users/ai/Documents/Projects/KPI/ui-library/node_modules/.pnpm/vite@8.3.8_@types+node@26.6.6_esbuild@0.25.12_jiti@2.7.0_yaml@2.9.1/node_modules/vite/dist/node/chunks/node.js:37607:11)
+    at async _createServer (file:///Users/ai/Documents/Projects/KPI/ui-library/node_modules/.pnpm/vite@8.3.8_@types+node@26.6.6_esbuild@0.25.12_jiti@2.7.0_yaml@2.9.1/node_modules/vite/dist/node/chunks/node.js:24755:65)
+    at async Module.start (file:///Users/ai/Documents/Projects/KPI/ui-library/node_modules/.pnpm/@storybook+builder-vite@10.6.7_storybook@10.6.7_@types+react@19.3.0_prettier@3.10.1_rea_1fb2def657602e076cd2ee1988311616/node_modules/@storybook/builder-vite/dist/index.js:1801:17)
+[14:43:31.625] [ERROR] Failed to build the preview
+[14:43:31.626] [ERROR] Error: Unable to index ./src/ui/typography/description.stories.tsx,./src/ui/typography/typography.stories.tsx
+    at _StoryIndexGenerator.getIndexAndStats (file://./node_modules/.pnpm/storybook@10.6.7_@types+react@19.3.0_prettier@3.10.1_react@19.3.1/node_modules/storybook/dist/core-server/index.js:17065:15)
+    at async _StoryIndexGenerator.getIndex (file://./node_modules/.pnpm/storybook@10.6.7_@types+react@19.3.0_prettier@3.10.1_react@19.3.1/node_modules/storybook/dist/core-server/index.js:17044:13)
+    at async BasicMinimalPluginContext.config (file://./node_modules/.pnpm/@storybook+builder-vite@10.6.7_storybook@10.6.7_@types+react@19.3.0_prettier@3.10.1_rea_1fb2def657602e076cd2ee1988311616/node_modules/@storybook/builder-vite/dist/_node-chunks/chunk-UEDSVI3A.js:188:19)
+    at async runConfigHook (file://./node_modules/.pnpm/vite@8.3.8_@types+node@26.6.6_esbuild@0.25.12_jiti@2.7.0_yaml@2.9.1/node_modules/vite/dist/node/chunks/node.js:38201:15)
+    at async resolveConfig (file://./node_modules/.pnpm/vite@8.3.8_@types+node@26.6.6_esbuild@0.25.12_jiti@2.7.0_yaml@2.9.1/node_modules/vite/dist/node/chunks/node.js:37607:11)
+    at async _createServer (file://./node_modules/.pnpm/vite@8.3.8_@types+node@26.6.6_esbuild@0.25.12_jiti@2.7.0_yaml@2.9.1/node_modules/vite/dist/node/chunks/node.js:24755:65)
+    at async Module.start (file://./node_modules/.pnpm/@storybook+builder-vite@10.6.7_storybook@10.6.7_@types+react@19.3.0_prettier@3.10.1_rea_1fb2def657602e076cd2ee1988311616/node_modules/@storybook/builder-vite/dist/index.js:1801:17)
+    at async storybookDevServer (file://./node_modules/.pnpm/storybook@10.6.7_@types+react@19.3.0_prettier@3.10.1_react@19.3.1/node_modules/storybook/dist/core-server/index.js:8584:59)
+    at async buildOrThrow (file://./node_modules/.pnpm/storybook@10.6.7_@types+react@19.3.0_prettier@3.10.1_react@19.3.1/node_modules/storybook/dist/core-server/index.js:7269:12)
+    at async buildDevStandalone (file://./node_modules/.pnpm/storybook@10.6.7_@types+react@19.3.0_prettier@3.10.1_react@19.3.1/node_modules/storybook/dist/core-server/index.js:9546:41)
+[14:43:31.626] [WARN] Broken build, fix the error above.
+You may need to refresh the browser.
+[14:43:35.679] [PROMPT] Would you like to send anonymous crash reports to improve Storybook and fix bugs faster? {"choice":false}

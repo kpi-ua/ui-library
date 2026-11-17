@@ -4,29 +4,28 @@ import { cn } from '@/lib/utils';
 import { Slot } from 'radix-ui';
 
 const badgeVariants = cva(
-  'inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-full border border-transparent px-2 py-0.5 text-xs font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 [&>svg]:pointer-events-none [&>svg]:size-3',
+  'inline-flex items-center border-1 rounded-full px-[10px] py-[2px] text-[13px] leading-base',
   {
     variants: {
       variant: {
-        default: 'bg-primary text-primary-foreground [a&]:hover:bg-primary/90',
-        secondary: 'bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90',
-        destructive:
-          'bg-destructive text-white focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40 [a&]:hover:bg-destructive/90',
-        outline:
-          'border-border text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground',
-        ghost: '[a&]:hover:bg-accent [a&]:hover:text-accent-foreground',
-        link: 'text-primary underline-offset-4 [a&]:hover:underline',
+        red: 'bg-status-error-50 border-status-error-200 text-status-error-700',
+        pink: 'bg-pink-50 border-pink-200 text-pink-700',
+        purple: 'bg-purple-50 border-purple-200 text-purple-700',
+        orange: 'bg-status-warning-100/50 border-status-warning-200 text-status-warning-700',
+        green: 'bg-status-success-50 border-status-success-200 text-status-success-700',
+        blue: 'bg-brand-100 border-brand-200 text-brand-700',
+        gray: 'bg-gray-100 border-gray-200 text-gray-700',
       },
     },
     defaultVariants: {
-      variant: 'default',
+      variant: 'gray',
     },
   },
 );
 
 function Badge({
   className,
-  variant = 'default',
+  variant = 'gray',
   asChild = false,
   ...props
 }: React.ComponentProps<'span'> & VariantProps<typeof badgeVariants> & { asChild?: boolean }) {
