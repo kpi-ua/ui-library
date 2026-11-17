@@ -26,6 +26,7 @@ const preview: Preview = {
   initialGlobals: { theme: 'light' },
   parameters: {
     layout: 'centered',
+    options: { storySort: { order: ['Introduction', 'Foundations', '*'] } },
     controls: { matchers: { color: /(background|color)$/i, date: /Date$/i } },
   },
   tags: ['autodocs'],
