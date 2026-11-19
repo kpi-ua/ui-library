@@ -23,7 +23,7 @@ export const Default: Story = {
   render: (args) => (
     <Dialog {...args}>
       <DialogTrigger asChild>
-        <Button variant="outline">Open dialog</Button>
+        <Button variant="primary">Open dialog</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
@@ -32,7 +32,7 @@ export const Default: Story = {
         </DialogHeader>
         <DialogFooter>
           <DialogClose asChild>
-            <Button variant="outline">Cancel</Button>
+            <Button variant="secondary">Cancel</Button>
           </DialogClose>
           <Button>Confirm</Button>
         </DialogFooter>

@@ -75,7 +75,7 @@ export const Sizes: Story = {
   ),
 };
 
-export const IconSizes: Story = {
+export const SizesWithIcon: Story = {
   render: (args) => (
     <div className="flex flex-wrap items-center gap-3">
       {sizeOptions.map((s) => (
