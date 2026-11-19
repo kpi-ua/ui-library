@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from './button';
 import WarningCircle from '@/icons/WarningCircle.svg';
-import SpinnerGap from '@/icons/SpinnerGap.svg';
+import LoadingIcon from '@/icons/Loading.svg';
 
 const variantOptions = ['primary', 'black', 'warning', 'secondary', 'tertiary', 'destructive'] as const;
 const sizeOptions = ['sm', 'md', 'lg', 'xl'] as const;
@@ -63,6 +63,18 @@ export const IconRight: Story = {
   ),
 };
 
+export const OnlyIcon: Story = {
+  render: (args) => (
+    <div className="flex flex-wrap items-center gap-3">
+      {variantOptions.map((v) => (
+        <Button key={v} {...args} variant={v}>
+          <WarningCircle />
+        </Button>
+      ))}
+    </div>
+  ),
+};
+
 export const Sizes: Story = {
   render: (args) => (
     <div className="flex flex-wrap items-center gap-3">
@@ -104,7 +116,7 @@ export const Loading: Story = {
     <div className="flex flex-wrap items-center gap-3">
       {variantOptions.map((v) => (
         <Button key={v} {...args} variant={v} disabled>
-          <SpinnerGap /> {v}
+          <LoadingIcon /> {v}
         </Button>
       ))}
     </div>
