@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Button } from './button';
 import WarningCircle from '@/icons/WarningCircle.svg';
-import LoadingIcon from '@/icons/Loading.svg';
+import Spinner from '@/icons/Spinner.svg';
 
 const variantOptions = ['primary', 'black', 'warning', 'secondary', 'tertiary', 'destructive'] as const;
 const sizeOptions = ['sm', 'md', 'lg', 'xl'] as const;
@@ -116,7 +116,7 @@ export const Loading: Story = {
     <div className="flex flex-wrap items-center gap-3">
       {variantOptions.map((v) => (
         <Button key={v} {...args} variant={v} disabled>
-          <LoadingIcon /> {v}
+          <Spinner /> {v}
         </Button>
       ))}
     </div>

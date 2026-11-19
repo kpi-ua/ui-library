@@ -13,7 +13,7 @@ const buttonVariants = cva(
         black:
           'bg-basic-black text-basic-white! enabled:hover:bg-neutral-800 active:bg-neutral-900 disabled:opacity-40 focus-visible:ring-basic-black',
         warning:
-          'bg-status-warning-500 text-basic-white! enabled:hover:bg-status-warning-400 active:bg-status-warning-600 disabled:opacity-40 focus-visible:ring-status-warning-500',
+          'bg-status-warning-500 text-basic-white! enabled:hover:bg-status-warning-600 active:bg-status-warning-600 disabled:opacity-40 focus-visible:ring-status-warning-500',
         secondary:
           'bg-basic-white text-gray-700 border-gray-300 enabled:hover:bg-gray-50 disabled:bg-basic-white disabled:border-gray-200 disabled:text-gray-400 focus-visible:ring-brand-600',
         tertiary:
