@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+
 import RichText from './rich-text';
 
 const meta = {
@@ -18,8 +19,7 @@ export const Default: Story = {
         {tags.h2('Contacts')}
         {tags.p(
           <>
-            Call us at {tags.tel('+380441234567')} or write to {tags.email('info@example.com')}.
-            {tags.br(null)}
+            Call us at {tags.tel('+380441234567')} or write to {tags.email('info@example.com')}.{tags.br(null)}
             {tags.b('Working hours:')} 9:00 - 18:00
           </>,
         )}

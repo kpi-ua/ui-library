@@ -1,5 +1,5 @@
-import { useCallback, useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { useCallback, useState } from 'react';
 
 const meta = {
   title: 'Foundations/Tokens',
@@ -44,14 +44,7 @@ const colorGroups: { title: string; items: ColorToken[] }[] = [
   },
   {
     title: 'Basic',
-    items: tokens('rgb', [
-      'uncategorized-main',
-      'basic-black',
-      'basic-blue',
-      'basic-white',
-      'basic-grey',
-      'grey-50',
-    ]),
+    items: tokens('rgb', ['uncategorized-main', 'basic-black', 'basic-blue', 'basic-white', 'basic-grey', 'grey-50']),
   },
   {
     title: 'Brand',
@@ -59,10 +52,7 @@ const colorGroups: { title: string; items: ColorToken[] }[] = [
   },
   {
     title: 'Neutral',
-    items: tokens('rgb', [
-      'neutral-divider',
-      ...scale('neutral', [900, 800, 700, 600, 500, 400, 300, 200, 100, 50]),
-    ]),
+    items: tokens('rgb', ['neutral-divider', ...scale('neutral', [900, 800, 700, 600, 500, 400, 300, 200, 100, 50])]),
   },
   {
     title: 'Pink',
@@ -111,9 +101,7 @@ const colorGroups: { title: string; items: ColorToken[] }[] = [
 // Channel lists may carry a 4th alpha value, e.g. "148 157 255 0.1".
 function toColor(fn: ColorFn, value: string) {
   const parts = value.split(/\s+/);
-  return parts.length === 4
-    ? `${fn}(${parts[0]} ${parts[1]} ${parts[2]} / ${parts[3]})`
-    : `${fn}(${value})`;
+  return parts.length === 4 ? `${fn}(${parts[0]} ${parts[1]} ${parts[2]} / ${parts[3]})` : `${fn}(${value})`;
 }
 
 function Swatch({ name, fn }: ColorToken) {
@@ -152,7 +140,9 @@ function useComputed(props: string[]) {
   const [values, setValues] = useState<string[]>([]);
   const ref = useCallback(
     (el: HTMLElement | null) => {
-      if (!el) return;
+      if (!el) {
+        return;
+      }
       const style = getComputedStyle(el);
       const next = props.map((p) => style.getPropertyValue(p));
       setValues((prev) => (prev.join() === next.join() ? prev : next));

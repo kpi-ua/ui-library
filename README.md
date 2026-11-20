@@ -37,8 +37,8 @@ import { exo2Font } from '@kpi-ua/ui/fonts/next';
 
 ## Subpaths
 
-| Import                | Content                                           |
-| --------------------- | ------------------------------------------------- |
+| Import                   | Content                                           |
+| ------------------------ | ------------------------------------------------- |
 | `@kpi-ua/ui`, `/ui`      | shadcn primitives (+ composed, currently empty)   |
 | `@kpi-ua/ui/hooks`       | shared hooks (empty)                              |
 | `@kpi-ua/ui/lib`         | `cn` and helpers                                  |
