@@ -1,4 +1,5 @@
 import type { Decorator, Preview } from '@storybook/react-vite';
+
 import '../src/styles/index.css';
 import '../src/styles/fonts.css';
 import { TooltipProvider } from '../src/ui/primitives/tooltip';
@@ -20,9 +21,7 @@ const preview: Preview = {
       toolbar: {
         title: 'Theme',
         icon: 'circlehollow',
-        items: [
-          { value: 'light', title: 'Light' },
-        ],
+        items: [{ value: 'light', title: 'Light' }],
         dynamicTitle: true,
       },
     },

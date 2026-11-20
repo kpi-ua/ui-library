@@ -1,15 +1,15 @@
 'use client';
 
-import * as React from 'react';
 import { format, isValid, parse } from 'date-fns';
 import { Calendar as CalendarIcon } from 'lucide-react';
+import * as React from 'react';
+import type { Matcher } from 'react-day-picker';
+
+import { cn } from '@/lib';
 
 import { Button } from '../primitives/button';
 import { Calendar } from '../primitives/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '../primitives/popover';
-import type { Matcher } from "react-day-picker";
-import { cn } from "@/lib";
-
 
 const DATE_ONLY_PREFIX_REGEX = /^\d{4}-\d{2}-\d{2}/;
 const API_DATE_FORMAT = 'yyyy-MM-dd';
@@ -44,7 +44,6 @@ export const parseDateOnly = (value: string): Date | undefined => {
 };
 
 export const todayDateOnly = (): string => format(new Date(), API_DATE_FORMAT);
-
 
 interface DatePickerProps extends Pick<React.ComponentProps<'button'>, 'id' | 'aria-invalid' | 'aria-describedby'> {
   // Calendar-only 'YYYY-MM-DD' string; Date objects never cross this boundary so the

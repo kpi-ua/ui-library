@@ -1,6 +1,6 @@
+import type { Meta, StoryObj } from '@storybook/react-vite';
 /// <reference types="vite/types/importMeta.d.ts" />
 import type { ComponentType, SVGProps } from 'react';
-import type { Meta, StoryObj } from '@storybook/react-vite';
 
 type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
 
@@ -25,10 +25,7 @@ export const All: Story = {
   render: () => (
     <div className="grid grid-cols-[repeat(auto-fill,minmax(8rem,1fr))] gap-3">
       {icons.map(({ name, Icon }) => (
-        <div
-          key={name}
-          className="flex flex-col items-center gap-2 rounded-lg border border-gray-200 p-3"
-        >
+        <div key={name} className="flex flex-col items-center gap-2 rounded-lg border border-gray-200 p-3">
           <Icon className="size-8" />
           <span className="w-full text-center text-xs wrap-break-word text-gray-600">{name}</span>
         </div>

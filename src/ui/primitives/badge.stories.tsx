@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+
 import { Badge } from './badge';
 
 const variantOptions = ['red', 'pink', 'purple', 'orange', 'green', 'blue', 'gray'] as const;

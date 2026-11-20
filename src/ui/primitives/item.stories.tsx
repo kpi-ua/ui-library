@@ -1,6 +1,9 @@
+// oxlint-disable next/no-img-element
 import type { Meta, StoryObj } from '@storybook/react-vite';
+
 import Info from '@/icons/Info.svg';
 import UserCircle from '@/icons/UserCircle.svg';
+
 import { Badge } from './badge';
 import { Button } from './button';
 import {

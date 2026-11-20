@@ -1,5 +1,6 @@
-import type { ComponentProps } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { ComponentProps } from 'react';
+
 import {
   Combobox,
   ComboboxChip,
@@ -164,7 +165,5 @@ export const MultipleNoWrap: Story = {
 };
 
 export const MultipleNoWrapCustomPlaceholder: Story = {
-  render: () => (
-    <MultipleExample wrap={false} maxDisplayedItems={2} remainingPlaceholder={(n) => `and ${n} more`} />
-  ),
+  render: () => <MultipleExample wrap={false} maxDisplayedItems={2} remainingPlaceholder={(n) => `and ${n} more`} />,
 };

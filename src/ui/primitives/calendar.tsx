@@ -1,10 +1,12 @@
 'use client';
 
-import * as React from 'react';
 import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
-import { buttonVariants, Button } from "./button";
-import { cn } from "@/lib";
-import { type DayButton, DayPicker, getDefaultClassNames } from "react-day-picker";
+import * as React from 'react';
+import { type DayButton, DayPicker, getDefaultClassNames } from 'react-day-picker';
+
+import { cn } from '@/lib';
+
+import { buttonVariants, Button } from './button';
 
 function Calendar({
   className,
@@ -129,7 +131,9 @@ function CalendarDayButton({ className, day, modifiers, ...props }: React.Compon
 
   const ref = React.useRef<HTMLButtonElement>(null);
   React.useEffect(() => {
-    if (modifiers.focused) ref.current?.focus();
+    if (modifiers.focused) {
+      ref.current?.focus();
+    }
   }, [modifiers.focused]);
 
   return (

@@ -1,8 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+
 import CopyRegular from '@/icons/CopyRegular.svg';
 import EnvelopeSimple from '@/icons/EnvelopeSimple.svg';
 import EyeRegular from '@/icons/EyeRegular.svg';
 import MagnifyingGlassRegular from '@/icons/MagnifyingGlassRegular.svg';
+
 import {
   InputGroup,
   InputGroupAddon,

@@ -1,7 +1,8 @@
-import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from '@/lib/utils';
 import { Slot } from 'radix-ui';
+import * as React from 'react';
+
+import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
   'inline-flex cursor-pointer shadow-xs items-center justify-center gap-2 whitespace-nowrap rounded-sm text-sm font-semibold border border-solid border-transparent ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 [&_svg]:shrink-0',
@@ -46,8 +47,8 @@ export interface ButtonProps extends React.ComponentProps<'button'>, VariantProp
 
 function Button({
   className,
-  variant = "primary",
-  size = "md",
+  variant = 'primary',
+  size = 'md',
   asChild = false,
   ...props
 }: React.ComponentProps<'button'> &

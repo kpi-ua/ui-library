@@ -2,27 +2,14 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+
 import Info from '@/icons/Info.svg';
+
 import { DatePicker } from '../composed/date-picker';
 import { Button } from './button';
 import { Checkbox } from './checkbox';
-import {
-  Combobox,
-  ComboboxContent,
-  ComboboxEmpty,
-  ComboboxInput,
-  ComboboxItem,
-  ComboboxList,
-} from './combobox';
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from './form';
+import { Combobox, ComboboxContent, ComboboxEmpty, ComboboxInput, ComboboxItem, ComboboxList } from './combobox';
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from './form';
 import { Input } from './input';
 import { InputGroup, InputGroupAddon } from './input-group';
 import { Label } from './label';
@@ -52,11 +39,7 @@ function ExampleForm({ defaultValues }: { defaultValues: Values }) {
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(() => undefined)}
-        className="grid w-80 gap-4"
-        noValidate
-      >
+      <form onSubmit={form.handleSubmit(() => undefined)} className="grid w-80 gap-4" noValidate>
         <FormField
           control={form.control}
           name="username"
@@ -128,11 +111,7 @@ function ProfileForm({ defaultValues }: { defaultValues: Partial<ProfileValues> 
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(() => undefined)}
-        className="grid w-80 gap-6"
-        noValidate
-      >
+      <form onSubmit={form.handleSubmit(() => undefined)} className="grid w-80 gap-6" noValidate>
         <FormField
           control={form.control}
           name="university"
@@ -242,15 +221,11 @@ function ProfileForm({ defaultValues }: { defaultValues: Partial<ProfileValues> 
 }
 
 export const WithMixedControls: Story = {
-  render: () => (
-    <ProfileForm defaultValues={{ university: '', birthDate: '', notifications: true, terms: false }} />
-  ),
+  render: () => <ProfileForm defaultValues={{ university: '', birthDate: '', notifications: true, terms: false }} />,
 };
 
 export const MixedControlsWithErrors: Story = {
-  render: () => (
-    <ProfileForm defaultValues={{ university: '', birthDate: '', notifications: false, terms: false }} />
-  ),
+  render: () => <ProfileForm defaultValues={{ university: '', birthDate: '', notifications: false, terms: false }} />,
   play: async ({ canvasElement }) => {
     canvasElement.querySelector('form')?.requestSubmit();
   },

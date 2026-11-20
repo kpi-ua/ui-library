@@ -1,8 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+
+import CircleWavyCheck from '@/icons/CircleWavyCheck.svg';
 import Info from '@/icons/Info.svg';
 import WarningIcon from '@/icons/Warning.svg';
 import WarningCircle from '@/icons/WarningCircle.svg';
-import CircleWavyCheck from '@/icons/CircleWavyCheck.svg';
+
 import { Alert, AlertDescription, AlertTitle } from './alert';
 
 const variantOptions = ['default', 'destructive', 'success', 'warning'] as const;

@@ -1,14 +1,26 @@
 import { filesize } from 'filesize';
-import { Item, ItemContent, ItemDescription, ItemFooter, ItemMedia, ItemTitle } from '../primitives/item';
-import { Show } from '../utility/show';
+import {
+  ArrowDownToLine,
+  CircleCheck,
+  CircleStop,
+  CircleX,
+  CloudUpload,
+  Eye,
+  RefreshCw,
+  Trash2,
+  type LucideProps,
+} from 'lucide-react';
+
 import FileTypeJpg from '@/icons/FileTypeJpg.svg';
 import FileTypePdf from '@/icons/FileTypePdf.svg';
 import FileTypePng from '@/icons/FileTypePng.svg';
 import { cn } from '@/lib';
-import { ArrowDownToLine, CircleCheck, CircleStop, CircleX, CloudUpload, Eye, RefreshCw, Trash2, type LucideProps } from 'lucide-react';
+
+import { Button } from '../primitives';
+import { Item, ItemContent, ItemDescription, ItemFooter, ItemMedia, ItemTitle } from '../primitives/item';
 import { Progress } from '../primitives/progress';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../primitives/tooltip';
-import { Button } from '../primitives';
+import { Show } from '../utility/show';
 
 export const MIME_TYPES = ['image/jpeg', 'image/png', 'application/pdf'] as const;
 

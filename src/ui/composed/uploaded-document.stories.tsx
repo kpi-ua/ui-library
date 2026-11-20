@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
+
 import { UploadedDocument, type MimeType, type UploadingFile } from './uploaded-document';
 
 const createFile = (name: string, mimeType: MimeType, size: number): UploadingFile => ({
@@ -39,7 +40,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Static: Story = { args: { mode: 'static' } };
 
-export const Preview: Story = { args: { mode: 'preview', onPreviewClick: fn(), downloadUrl: 'https://test.com/test.jpg' } };
+export const Preview: Story = {
+  args: { mode: 'preview', onPreviewClick: fn(), downloadUrl: 'https://test.com/test.jpg' },
+};
 
 export const Uploading: Story = {
   args: {

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+
 import { Label } from './label';
 import { RadioGroup, RadioGroupItem } from './radio-group';
 
@@ -53,11 +54,7 @@ export const DisabledItem: Story = {
     <RadioGroup {...args}>
       {options.map(({ value, label }) => (
         <div key={value} className="flex items-center gap-2">
-          <RadioGroupItem
-            id={`item-${value}`}
-            value={value}
-            disabled={value === 'compact'}
-          />
+          <RadioGroupItem id={`item-${value}`} value={value} disabled={value === 'compact'} />
           <Label htmlFor={`item-${value}`}>{label}</Label>
         </div>
       ))}

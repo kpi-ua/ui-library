@@ -1,19 +1,14 @@
 'use client';
 
-import * as React from 'react';
 import { Combobox as ComboboxPrimitive } from '@base-ui/react';
 import { type VariantProps } from 'class-variance-authority';
 import { cn } from 'cn';
 import { CheckIcon, ChevronDownIcon, XIcon } from 'lucide-react';
+import * as React from 'react';
 
 import { badgeVariants } from '@/ui/primitives/badge';
 import { Button } from '@/ui/primitives/button';
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupInput,
-} from '@/ui/primitives/input-group';
+import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from '@/ui/primitives/input-group';
 
 const Combobox = ComboboxPrimitive.Root;
 
@@ -42,14 +37,10 @@ function ComboboxValue({ children, ...props }: ComboboxPrimitive.Value.Props) {
   return (
     <ComboboxPrimitive.Value data-slot="combobox-value" {...props}>
       {(values: unknown) => {
-        const remainder = Array.isArray(values)
-          ? Math.max(0, values.length - chips.maxDisplayedItems)
-          : 0;
+        const remainder = Array.isArray(values) ? Math.max(0, values.length - chips.maxDisplayedItems) : 0;
         return (
           <ComboboxChipsOverflowContext.Provider value={remainder}>
-            {children(
-              remainder > 0 ? (values as unknown[]).slice(0, chips.maxDisplayedItems) : values,
-            )}
+            {children(remainder > 0 ? (values as unknown[]).slice(0, chips.maxDisplayedItems) : values)}
           </ComboboxChipsOverflowContext.Provider>
         );
       }}
@@ -65,10 +56,7 @@ function ComboboxTrigger({ className, children, ...props }: ComboboxPrimitive.Tr
       {...props}
     >
       {children}
-      <ChevronDownIcon
-        data-slot="combobox-trigger-icon"
-        className="pointer-events-none size-4 text-muted-foreground"
-      />
+      <ChevronDownIcon data-slot="combobox-trigger-icon" className="pointer-events-none size-4 text-muted-foreground" />
     </ComboboxPrimitive.Trigger>
   );
 }
@@ -134,10 +122,7 @@ function ComboboxContent({
   anchor,
   ...props
 }: ComboboxPrimitive.Popup.Props &
-  Pick<
-    ComboboxPrimitive.Positioner.Props,
-    'side' | 'align' | 'sideOffset' | 'alignOffset' | 'anchor'
-  >) {
+  Pick<ComboboxPrimitive.Positioner.Props, 'side' | 'align' | 'sideOffset' | 'alignOffset' | 'anchor'>) {
   return (
     <ComboboxPrimitive.Portal>
       <ComboboxPrimitive.Positioner
@@ -188,9 +173,7 @@ function ComboboxItem({ className, children, ...props }: ComboboxPrimitive.Item.
       {children}
       <ComboboxPrimitive.ItemIndicator
         data-slot="combobox-item-indicator"
-        render={
-          <span className="pointer-events-none absolute right-2 flex size-4 items-center justify-center" />
-        }
+        render={<span className="pointer-events-none absolute right-2 flex size-4 items-center justify-center" />}
       >
         <CheckIcon className="pointer-events-none size-4 pointer-coarse:size-5" />
       </ComboboxPrimitive.ItemIndicator>
@@ -199,9 +182,7 @@ function ComboboxItem({ className, children, ...props }: ComboboxPrimitive.Item.
 }
 
 function ComboboxGroup({ className, ...props }: ComboboxPrimitive.Group.Props) {
-  return (
-    <ComboboxPrimitive.Group data-slot="combobox-group" className={cn(className)} {...props} />
-  );
+  return <ComboboxPrimitive.Group data-slot="combobox-group" className={cn(className)} {...props} />;
 }
 
 function ComboboxLabel({ className, ...props }: ComboboxPrimitive.GroupLabel.Props) {
