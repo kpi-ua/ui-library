@@ -26,7 +26,7 @@ function InputGroup({ className, ...props }: React.ComponentProps<'div'>) {
         'has-[[data-slot=input-group-control]:focus-visible]:ring-brand-500 has-[[data-slot=input-group-control]:focus-visible]:border-brand-500 has-[[data-slot=input-group-control]:focus-visible]:ring-1',
 
         // Error state.
-        'has-[[data-slot][aria-invalid=true]]:ring-destructive/20 has-[[data-slot][aria-invalid=true]]:border-destructive dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40',
+        'has-[[data-slot][aria-invalid=true]]:border-destructive/60 has-[[data-slot][aria-invalid=true]]:ring-1 has-[[data-slot][aria-invalid=true]]:ring-destructive/60',
 
         // Disabled
         'has-[>button:disabled]:bg-gray-50 has-[>input:disabled]:bg-gray-50',
@@ -126,7 +126,7 @@ function InputGroupInput({ className, ...props }: React.ComponentProps<'input'>)
     <Input
       data-slot="input-group-control"
       className={cn(
-        'flex-1 rounded-none border-0 bg-transparent shadow-none focus-visible:ring-0 disabled:bg-transparent dark:bg-transparent',
+        'flex-1 rounded-none border-0 bg-transparent shadow-none focus-visible:ring-0 aria-invalid:ring-0 disabled:bg-transparent dark:bg-transparent',
         className,
       )}
       {...props}

@@ -2,6 +2,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+import Info from '@/icons/Info.svg';
+import { DatePicker } from '../composed/date-picker';
 import { Button } from './button';
 import { Checkbox } from './checkbox';
 import {
@@ -22,6 +24,7 @@ import {
   FormMessage,
 } from './form';
 import { Input } from './input';
+import { InputGroup, InputGroupAddon } from './input-group';
 import { Label } from './label';
 import { RadioGroup, RadioGroupItem } from './radio-group';
 import { Switch } from './switch';
@@ -108,6 +111,7 @@ const plans = [
 
 const profileSchema = z.object({
   university: z.string().min(1, 'Select a university.'),
+  birthDate: z.string().min(1, 'Select a date of birth.'),
   plan: z.enum(['free', 'pro', 'enterprise'], 'Select a plan.'),
   notifications: z.boolean(),
   terms: z.boolean().refine((value) => value, 'You must accept the terms.'),
@@ -154,6 +158,29 @@ function ProfileForm({ defaultValues }: { defaultValues: Partial<ProfileValues> 
                   </ComboboxList>
                 </ComboboxContent>
               </Combobox>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="birthDate"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Date of birth</FormLabel>
+              <InputGroup>
+                <FormControl>
+                  <DatePicker
+                    asInputGroupControl
+                    value={field.value}
+                    onChange={(date) => field.onChange(date ?? '')}
+                    onBlur={field.onBlur}
+                  />
+                </FormControl>
+                <InputGroupAddon align="inline-end">
+                  <Info />
+                </InputGroupAddon>
+              </InputGroup>
               <FormMessage />
             </FormItem>
           )}
@@ -216,13 +243,13 @@ function ProfileForm({ defaultValues }: { defaultValues: Partial<ProfileValues> 
 
 export const WithMixedControls: Story = {
   render: () => (
-    <ProfileForm defaultValues={{ university: '', notifications: true, terms: false }} />
+    <ProfileForm defaultValues={{ university: '', birthDate: '', notifications: true, terms: false }} />
   ),
 };
 
 export const MixedControlsWithErrors: Story = {
   render: () => (
-    <ProfileForm defaultValues={{ university: '', notifications: false, terms: false }} />
+    <ProfileForm defaultValues={{ university: '', birthDate: '', notifications: false, terms: false }} />
   ),
   play: async ({ canvasElement }) => {
     canvasElement.querySelector('form')?.requestSubmit();
