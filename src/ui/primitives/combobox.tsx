@@ -6,9 +6,10 @@ import { cn } from 'cn';
 import { CheckIcon, ChevronDownIcon, XIcon } from 'lucide-react';
 import * as React from 'react';
 
-import { badgeVariants } from '@/ui/primitives/badge';
 import { Button } from '@/ui/primitives/button';
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from '@/ui/primitives/input-group';
+
+import { badgeVariants } from './badge';
 
 const Combobox = ComboboxPrimitive.Root;
 

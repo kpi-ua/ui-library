@@ -10,7 +10,11 @@ const shared: Options = {
 export default defineConfig([
   {
     ...shared,
-    entry: { 'ui/index': 'src/ui/index.ts', 'hooks/index': 'src/hooks/index.ts' },
+    entry: {
+      'ui/index': 'src/ui/index.ts',
+      'hooks/index': 'src/hooks/index.ts',
+      'icons/index': 'src/icons/index.ts',
+    },
     splitting: true,
     clean: true,
     banner: { js: '"use client";' },

@@ -31,6 +31,10 @@
       "types": "./dist/ui/index.d.ts",
       "import": "./dist/ui/index.js"
     },
+    "./icons": {
+      "types": "./dist/icons/index.d.ts",
+      "import": "./dist/icons/index.js"
+    },
     "./hooks": {
       "types": "./dist/hooks/index.d.ts",
       "import": "./dist/hooks/index.js"
@@ -54,7 +58,8 @@
     "./package.json": "./package.json"
   },
   "scripts": {
-    "build": "tsup && tsc -p tsconfig.build.json && node scripts/copy-css.mjs",
+    "generate:icons": "node scripts/generate-icons.mjs",
+    "build": "node scripts/generate-icons.mjs && tsup && tsc -p tsconfig.build.json && node scripts/copy-css.mjs",
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit",
     "lint": "oxlint .",
@@ -64,7 +69,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "vitest run --passWithNoTests",
-    "check-exports": "publint && attw --pack . --profile esm-only --entrypoints . ./ui ./hooks ./lib ./auth/server ./auth/next --ignore-rules internal-resolution-error",
+    "check-exports": "publint && attw --pack . --profile esm-only --entrypoints . ./ui ./icons ./hooks ./lib ./auth/server ./auth/next --ignore-rules internal-resolution-error",
     "changeset": "changeset",
     "release": "pnpm build && changeset publish"
   },

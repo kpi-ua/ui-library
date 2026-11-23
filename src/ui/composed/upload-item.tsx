@@ -15,8 +15,8 @@ import FileTypeJpg from '@/icons/FileTypeJpg.svg';
 import FileTypePdf from '@/icons/FileTypePdf.svg';
 import FileTypePng from '@/icons/FileTypePng.svg';
 import { cn } from '@/lib';
-import type { MimeType, UploadingFile, UploadStatus } from '@/types/common';
 
+import type { MimeType, UploadingFile, UploadStatus } from '../../types/common';
 import { Button } from '../primitives';
 import { Item, ItemContent, ItemDescription, ItemFooter, ItemMedia, ItemTitle } from '../primitives/item';
 import { Progress } from '../primitives/progress';

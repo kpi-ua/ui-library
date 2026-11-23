@@ -5,8 +5,8 @@ import { CloudUpload } from 'lucide-react';
 import { useMemo, useRef, useState } from 'react';
 
 import { cn } from '@/lib/utils';
-import { MIME_TYPE_EXTENSIONS, type MimeType } from '@/types/common';
 
+import { MIME_TYPE_EXTENSIONS, type MimeType } from '../../types/common';
 import { Item } from '../primitives/item';
 
 interface FileUploadProps {
