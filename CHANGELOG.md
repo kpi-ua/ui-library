@@ -1,5 +1,11 @@
 # @kpi-ua/ui
 
+## 0.0.6
+
+### Patch Changes
+
+- Include exports of other components
+
 ## 0.0.5
 
 ### Patch Changes
