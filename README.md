@@ -43,7 +43,6 @@ import { exo2Font } from '@kpi-ua/ui/fonts/next';
 | `@kpi-ua/ui/hooks`       | shared hooks (empty)                              |
 | `@kpi-ua/ui/lib`         | `cn` and helpers                                  |
 | `@kpi-ua/ui/auth/server` | `createAuth` (better-auth, optional peer)         |
-| `@kpi-ua/ui/auth/client` | `createAppAuthClient`                             |
 | `@kpi-ua/ui/auth/next`   | route handler, middleware, `getServerSession`     |
 | `@kpi-ua/ui/fonts/next`  | `exo2Font` (needs `next`, shipped as source)      |
 | `@kpi-ua/ui/styles.css`  | theme tokens (no Tailwind import, no font files)  |

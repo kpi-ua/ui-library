@@ -21,7 +21,6 @@ export default defineConfig([
     entry: {
       'lib/index': 'src/lib/index.ts',
       'auth/server/index': 'src/auth/server/index.ts',
-      'auth/client/index': 'src/auth/client/index.ts',
       'auth/next/index': 'src/auth/next/index.ts',
     },
     external: [/^next(\/.*)?$/],

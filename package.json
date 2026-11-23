@@ -64,7 +64,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "vitest run --passWithNoTests",
-    "check-exports": "publint && attw --pack . --profile esm-only --entrypoints . ./ui ./hooks ./lib ./auth/server ./auth/client ./auth/next --ignore-rules internal-resolution-error",
+    "check-exports": "publint && attw --pack . --profile esm-only --entrypoints . ./ui ./hooks ./lib ./auth/server ./auth/next --ignore-rules internal-resolution-error",
     "changeset": "changeset",
     "release": "pnpm build && changeset publish"
   },
