@@ -30,59 +30,40 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
-
-export const Destructive: Story = {
-  args: { variant: 'destructive' },
+export const Default: Story = {
   render: (args) => (
-    <Alert {...args}>
-      <AlertTitle>Error</AlertTitle>
-      <AlertDescription>Your session has expired. Please log in again.</AlertDescription>
-    </Alert>
+    <div className="flex flex-col gap-4">
+      {variantOptions.map((variant) => (
+        <Alert key={variant} {...args} variant={variant}>
+          <AlertTitle>{variant}</AlertTitle>
+          <AlertDescription>Outline alert with an icon for the {variant} variant.</AlertDescription>
+        </Alert>
+      ))}
+    </div>
   ),
 };
 
 export const WithIcon: Story = {
-  render: (args) => (
-    <Alert {...args}>
-      <Info />
-      <AlertTitle>Heads up!</AlertTitle>
-      <AlertDescription>You can add components to your app using the CLI.</AlertDescription>
-    </Alert>
-  ),
-};
+  render: (args) => {
+    const items = [
+      { variant: 'default', icon: <Info /> },
+      { variant: 'destructive', icon: <WarningCircle /> },
+      { variant: 'success', icon: <CircleWavyCheck /> },
+      { variant: 'warning', icon: <WarningIcon /> },
+    ] as const;
 
-export const DestructiveWithIcon: Story = {
-  args: { variant: 'destructive' },
-  render: (args) => (
-    <Alert {...args}>
-      <WarningCircle />
-      <AlertTitle>Error</AlertTitle>
-      <AlertDescription>Your session has expired. Please log in again.</AlertDescription>
-    </Alert>
-  ),
-};
-
-export const Success: Story = {
-  args: { variant: 'success' },
-  render: (args) => (
-    <Alert {...args}>
-      <CircleWavyCheck />
-      <AlertTitle>Success</AlertTitle>
-      <AlertDescription>Your changes have been saved.</AlertDescription>
-    </Alert>
-  ),
-};
-
-export const Warning: Story = {
-  args: { variant: 'warning' },
-  render: (args) => (
-    <Alert {...args}>
-      <WarningIcon />
-      <AlertTitle>Warning</AlertTitle>
-      <AlertDescription>Your subscription expires in 3 days.</AlertDescription>
-    </Alert>
-  ),
+    return (
+      <div className="flex flex-col gap-4">
+        {items.map(({ variant, icon }) => (
+          <Alert key={variant} {...args} variant={variant}>
+            {icon}
+            <AlertTitle>{variant}</AlertTitle>
+            <AlertDescription>Outline alert with an icon for the {variant} variant.</AlertDescription>
+          </Alert>
+        ))}
+      </div>
+    );
+  },
 };
 
 export const TitleOnly: Story = {
@@ -129,17 +110,4 @@ export const OutlineWithIcon: Story = {
       </div>
     );
   },
-};
-
-export const Variants: Story = {
-  render: (args) => (
-    <div className="flex flex-col gap-4">
-      {variantOptions.map((v) => (
-        <Alert key={v} {...args} variant={v}>
-          <AlertTitle>{v}</AlertTitle>
-          <AlertDescription>Alert description for the {v} variant.</AlertDescription>
-        </Alert>
-      ))}
-    </div>
-  ),
 };

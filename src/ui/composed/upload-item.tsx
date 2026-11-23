@@ -15,39 +15,13 @@ import FileTypeJpg from '@/icons/FileTypeJpg.svg';
 import FileTypePdf from '@/icons/FileTypePdf.svg';
 import FileTypePng from '@/icons/FileTypePng.svg';
 import { cn } from '@/lib';
+import type { MimeType, UploadingFile, UploadStatus } from '@/types/common';
 
 import { Button } from '../primitives';
 import { Item, ItemContent, ItemDescription, ItemFooter, ItemMedia, ItemTitle } from '../primitives/item';
 import { Progress } from '../primitives/progress';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../primitives/tooltip';
 import { Show } from '../utility/show';
-
-export const MIME_TYPES = ['image/jpeg', 'image/png', 'application/pdf'] as const;
-
-export type MimeType = (typeof MIME_TYPES)[number];
-
-export const MIME_TYPE_EXTENSIONS: Record<MimeType, string[]> = {
-  'image/jpeg': ['jpg', 'jpeg'],
-  'image/png': ['png'],
-  'application/pdf': ['pdf'],
-};
-
-export type UploadStatus = 'uploading' | 'finished' | 'error';
-
-type BaseFile = {
-  id: string;
-  name: string;
-  size: number;
-  mimeType: MimeType;
-};
-
-export type UploadingFile = BaseFile & {
-  status: 'uploading';
-  uploadProgress: number;
-  uploadStatus: UploadStatus;
-  file: File;
-  controller: AbortController;
-};
 
 /*
  * Document component modes:
@@ -95,7 +69,7 @@ const ActionButton = ({
   </Tooltip>
 );
 
-export const UploadedDocument = ({
+export const UploadItem = ({
   uploadingFile,
   uploadProgressBytes,
   uploadStatus = 'finished',
@@ -110,22 +84,6 @@ export const UploadedDocument = ({
   const getProgress = () => {
     return Math.floor(((uploadProgressBytes || 0) / uploadingFile.size) * 100);
   };
-
-  // const handleSaveFile = async () => {
-  //   if (!downloadUrl) {
-  //     return;
-  //   }
-
-  //   try {
-  //     const response = await fetch(downloadUrl);
-  //     if (!response.ok) throw new Error('Failed to fetch file.');
-
-  //     const blob = await response.blob();
-  //     saveAs(blob, documentFile.name);
-  //   } catch (error) {
-  //     console.error('Download error:', error);
-  //   }
-  // };
 
   const renderActionButton = () => {
     switch (uploadStatus) {
@@ -193,7 +151,7 @@ export const UploadedDocument = ({
     <Item variant="outline" className={cn('relative items-start', className)}>
       <ItemMedia>{FileTypeIcon[uploadingFile.mimeType]}</ItemMedia>
       <ItemContent>
-        <ItemTitle className="line-clamp-1 pr-5 [overflow-wrap:anywhere]">{uploadingFile.name}</ItemTitle>
+        <ItemTitle className="line-clamp-1 pr-5 wrap-anywhere">{uploadingFile.name}</ItemTitle>
         <Show when={['static', 'preview'].includes(mode)}>{renderFileDescription()}</Show>
         <Show when={['uploading'].includes(mode)}>{renderProgress()}</Show>
       </ItemContent>
@@ -206,21 +164,17 @@ export const UploadedDocument = ({
             <>
               <Button
                 size="sm"
-                variant="tertiary"
+                variant="secondary"
                 className="w-full"
                 type="button"
                 onClick={() => {
-                  // if (onPreviewClick) {
-                  //   onPreviewClick(documentFile);
-                  // } else {
-                  //   window.open(downloadUrl, '_blank', 'noopener,noreferrer');
-                  // }
+                  // TODO:
                 }}
               >
                 <Eye strokeWidth={1.75} />
                 Переглянути
               </Button>
-              <Button size="sm" variant="tertiary" className="w-full" type="button">
+              <Button size="sm" variant="secondary" className="w-full" type="button">
                 <ArrowDownToLine strokeWidth={1.75} />
                 Завантажити
               </Button>

@@ -172,7 +172,7 @@ function SpacingRow({ step, cls }: { step: string; cls: string }) {
   return (
     <div className="flex items-center gap-4">
       <span className="w-12 text-xs font-medium">{step}</span>
-      <div ref={ref} className={`${cls} h-4 rounded-sm bg-brand-600`} />
+      <div ref={ref} className={`${cls} h-4 rounded-xs bg-brand-600`} />
       <span className="text-xs text-muted-foreground">{width}</span>
     </div>
   );
@@ -232,6 +232,7 @@ export const FontSizes: Story = {
 };
 
 const radii = [
+  ['xs', 'rounded-xs'],
   ['sm', 'rounded-sm'],
   ['md', 'rounded-md'],
   ['lg', 'rounded-lg'],

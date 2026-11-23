@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { fn } from 'storybook/test';
 
-import { UploadedDocument, type MimeType, type UploadingFile } from './uploaded-document';
+import { type MimeType, type UploadingFile } from '@/types/common';
+
+import { UploadItem } from './upload-item';
 
 const createFile = (name: string, mimeType: MimeType, size: number): UploadingFile => ({
   id: name,
@@ -18,8 +20,8 @@ const createFile = (name: string, mimeType: MimeType, size: number): UploadingFi
 const pdf = createFile('passport.pdf', 'application/pdf', 2_411_724);
 
 const meta = {
-  title: 'Composed/UploadedDocument',
-  component: UploadedDocument,
+  title: 'Composed/UploadItem',
+  component: UploadItem,
   args: {
     uploadingFile: pdf,
     onCancelClick: fn(),
@@ -28,12 +30,12 @@ const meta = {
   },
   decorators: [
     (Story) => (
-      <div className="w-80">
+      <div className="w-100">
         <Story />
       </div>
     ),
   ],
-} satisfies Meta<typeof UploadedDocument>;
+} satisfies Meta<typeof UploadItem>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -81,9 +83,9 @@ export const LongName: Story = {
 export const FileTypes: Story = {
   render: (args) => (
     <div className="grid gap-2">
-      <UploadedDocument {...args} uploadingFile={createFile('photo.jpg', 'image/jpeg', 1_048_576)} />
-      <UploadedDocument {...args} uploadingFile={createFile('scan.png', 'image/png', 3_145_728)} />
-      <UploadedDocument {...args} uploadingFile={pdf} />
+      <UploadItem {...args} uploadingFile={createFile('photo.jpg', 'image/jpeg', 1_048_576)} />
+      <UploadItem {...args} uploadingFile={createFile('scan.png', 'image/png', 3_145_728)} />
+      <UploadItem {...args} uploadingFile={pdf} />
     </div>
   ),
 };
