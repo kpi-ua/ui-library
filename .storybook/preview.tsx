@@ -1,10 +1,16 @@
 import type { Decorator, Preview } from '@storybook/react-vite';
+
 import '../src/styles/index.css';
 import '../src/styles/fonts.css';
+import { TooltipProvider } from '../src/ui/primitives/tooltip';
 
 const withTheme: Decorator = (Story, context) => {
   document.documentElement.classList.toggle('dark', context.globals.theme === 'dark');
-  return Story();
+  return (
+    <TooltipProvider>
+      <Story />
+    </TooltipProvider>
+  );
 };
 
 const preview: Preview = {
@@ -15,9 +21,7 @@ const preview: Preview = {
       toolbar: {
         title: 'Theme',
         icon: 'circlehollow',
-        items: [
-          { value: 'light', title: 'Light' },
-        ],
+        items: [{ value: 'light', title: 'Light' }],
         dynamicTitle: true,
       },
     },

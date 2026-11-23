@@ -1,7 +1,7 @@
-import { headers } from 'next/headers';
-import { NextResponse, type NextRequest } from 'next/server';
 import { getSessionCookie } from 'better-auth/cookies';
 import { nextCookies, toNextJsHandler } from 'better-auth/next-js';
+import { headers } from 'next/headers';
+import { NextResponse, type NextRequest } from 'next/server';
 
 type AuthInstance = Parameters<typeof toNextJsHandler>[0];
 type SessionAuth = { api: { getSession: (ctx: { headers: Headers }) => Promise<unknown> } };
@@ -15,9 +15,7 @@ export function createAuthRouteHandler(auth: AuthInstance) {
 
 /** Server-side session lookup for Server Components and Server Actions. */
 export async function getServerSession<A extends SessionAuth>(auth: A) {
-  return (await auth.api.getSession({ headers: await headers() })) as Awaited<
-    ReturnType<A['api']['getSession']>
-  >;
+  return (await auth.api.getSession({ headers: await headers() })) as Awaited<ReturnType<A['api']['getSession']>>;
 }
 
 export interface AuthMiddlewareOptions {
@@ -27,10 +25,7 @@ export interface AuthMiddlewareOptions {
 }
 
 /** Cookie-only gate for Next middleware/proxy; validate the session on the server for real checks. */
-export function createAuthMiddleware({
-  loginPath = '/login',
-  publicPaths = [],
-}: AuthMiddlewareOptions = {}) {
+export function createAuthMiddleware({ loginPath = '/login', publicPaths = [] }: AuthMiddlewareOptions = {}) {
   const open = [loginPath, ...publicPaths];
 
   return function authMiddleware(request: NextRequest) {

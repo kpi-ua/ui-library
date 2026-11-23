@@ -1,14 +1,7 @@
-import { useCallback, useState, type ComponentType } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import {
-  Heading0,
-  Heading1,
-  Heading2,
-  Heading3,
-  Heading4,
-  Heading5,
-  Heading6,
-} from './headers';
+import { useCallback, useState, type ComponentType } from 'react';
+
+import { Heading0, Heading1, Heading2, Heading3, Heading4, Heading5, Heading6 } from './headers';
 
 const meta = {
   title: 'Typography/Headings',
@@ -43,7 +36,9 @@ const PROPS = ['font-size', 'line-height', 'font-weight'];
 function useComputed() {
   const [values, setValues] = useState<string[]>([]);
   const ref = useCallback((el: HTMLElement | null) => {
-    if (!el) return;
+    if (!el) {
+      return;
+    }
     const style = getComputedStyle(el);
     const next = PROPS.map((p) => style.getPropertyValue(p));
     setValues((prev) => (prev.join() === next.join() ? prev : next));
@@ -68,11 +63,17 @@ function HeadingRow({
       <div className="space-y-1">
         <p className="text-base font-semibold">&lt;{name} /&gt;</p>
         <dl className="grid grid-cols-[auto_1fr] gap-x-2 text-xs text-muted-foreground">
-          <dt><strong>Size</strong></dt>
+          <dt>
+            <strong>Size</strong>
+          </dt>
           <dd>{size}</dd>
-          <dt><strong>Line height</strong></dt>
+          <dt>
+            <strong>Line height</strong>
+          </dt>
           <dd>{leading}</dd>
-          <dt><strong>Weight</strong></dt>
+          <dt>
+            <strong>Weight</strong>
+          </dt>
           <dd>{weight}</dd>
         </dl>
       </div>
@@ -85,8 +86,7 @@ export const Scale: Story = {
   render: ({ children }) => (
     <div>
       <p className="pb-4 text-sm text-muted-foreground">
-        Sizes switch at the <code className="font-mono">lg</code> breakpoint; values below reflect
-        the current viewport.
+        Sizes switch at the <code className="font-mono">lg</code> breakpoint; values below reflect the current viewport.
       </p>
       <div className="border-t border-neutral-divider">
         {headings.map((heading) => (

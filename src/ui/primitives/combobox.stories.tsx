@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { ComponentProps } from 'react';
+
 import {
   Combobox,
   ComboboxChip,
@@ -104,17 +106,36 @@ export const Disabled: Story = {
   ),
 };
 
-function MultipleExample() {
+export const Invalid: Story = {
+  render: () => (
+    <Combobox items={universities}>
+      <ComboboxInput placeholder="Select a university" aria-invalid="true" />
+    </Combobox>
+  ),
+};
+
+const chipVariants: Record<string, ComponentProps<typeof ComboboxChip>['variant']> = {
+  KPI: 'blue',
+  'Lviv Polytechnic': 'green',
+  KNU: 'purple',
+  KNEU: 'orange',
+  'Kharkiv Polytechnic': 'red',
+  ONU: 'pink',
+};
+
+function MultipleExample(chipsProps: ComponentProps<typeof ComboboxChips>) {
   const anchor = useComboboxAnchor();
 
   return (
-    <Combobox multiple items={universities} defaultValue={['KPI']}>
-      <ComboboxChips ref={anchor}>
+    <Combobox multiple items={universities} defaultValue={['KPI', 'KNU']}>
+      <ComboboxChips ref={anchor} {...chipsProps}>
         <ComboboxValue>
           {(values: string[]) => (
             <>
               {values.map((value) => (
-                <ComboboxChip key={value}>{value}</ComboboxChip>
+                <ComboboxChip key={value} variant={chipVariants[value]}>
+                  {value}
+                </ComboboxChip>
               ))}
               <ComboboxChipsInput placeholder="Add university" />
             </>
@@ -137,4 +158,12 @@ function MultipleExample() {
 
 export const Multiple: Story = {
   render: () => <MultipleExample />,
+};
+
+export const MultipleNoWrap: Story = {
+  render: () => <MultipleExample wrap={false} maxDisplayedItems={3} />,
+};
+
+export const MultipleNoWrapCustomPlaceholder: Story = {
+  render: () => <MultipleExample wrap={false} maxDisplayedItems={2} remainingPlaceholder={(n) => `and ${n} more`} />,
 };
