@@ -43,10 +43,6 @@
       "types": "./dist/auth/server/index.d.ts",
       "import": "./dist/auth/server/index.js"
     },
-    "./auth/client": {
-      "types": "./dist/auth/client/index.d.ts",
-      "import": "./dist/auth/client/index.js"
-    },
     "./auth/next": {
       "types": "./dist/auth/next/index.d.ts",
       "import": "./dist/auth/next/index.js"
