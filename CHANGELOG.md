@@ -1,5 +1,11 @@
 # @kpi-ua/ui
 
+## 0.0.4
+
+### Patch Changes
+
+- Added createAuth function for creating better-auth configuration
+
 ## 0.0.3
 
 ### Patch Changes
