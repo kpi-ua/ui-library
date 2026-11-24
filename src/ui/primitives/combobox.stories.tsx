@@ -123,11 +123,15 @@ const chipVariants: Record<string, ComponentProps<typeof ComboboxChip>['variant'
   ONU: 'pink',
 };
 
-function MultipleExample(chipsProps: ComponentProps<typeof ComboboxChips>) {
+function MultipleExample({
+  showClear,
+  disabled,
+  ...chipsProps
+}: ComponentProps<typeof ComboboxChips> & { showClear?: boolean; disabled?: boolean }) {
   const anchor = useComboboxAnchor();
 
   return (
-    <Combobox multiple items={universities} defaultValue={['KPI', 'KNU']}>
+    <Combobox multiple items={universities} defaultValue={['KPI', 'KNU']} disabled={disabled}>
       <ComboboxChips ref={anchor} {...chipsProps}>
         <ComboboxValue>
           {(values: string[]) => (
@@ -137,7 +141,7 @@ function MultipleExample(chipsProps: ComponentProps<typeof ComboboxChips>) {
                   {value}
                 </ComboboxChip>
               ))}
-              <ComboboxChipsInput placeholder="Add university" />
+              <ComboboxChipsInput placeholder="Add university" showClear={showClear} />
             </>
           )}
         </ComboboxValue>
@@ -160,10 +164,18 @@ export const Multiple: Story = {
   render: () => <MultipleExample />,
 };
 
+export const MultipleWithClear: Story = {
+  render: () => <MultipleExample showClear />,
+};
+
 export const MultipleNoWrap: Story = {
   render: () => <MultipleExample wrap={false} maxDisplayedItems={3} />,
 };
 
 export const MultipleNoWrapCustomPlaceholder: Story = {
   render: () => <MultipleExample wrap={false} maxDisplayedItems={2} remainingPlaceholder={(n) => `and ${n} more`} />,
+};
+
+export const MultipleDisabled: Story = {
+  render: () => <MultipleExample disabled />,
 };

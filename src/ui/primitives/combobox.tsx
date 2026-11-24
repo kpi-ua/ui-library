@@ -245,7 +245,7 @@ function ComboboxChips({
       <ComboboxPrimitive.Chips
         data-slot="combobox-chips"
         className={cn(
-          'flex min-h-9 items-center gap-1.5 rounded-sm border border-input bg-transparent bg-clip-padding px-1 py-1 text-sm shadow-xs transition-[color,box-shadow] focus-within:border-brand-500 focus-within:ring-1 focus-within:ring-brand-500 has-aria-invalid:border-destructive/60 has-aria-invalid:ring-1 has-aria-invalid:ring-destructive/60 has-data-[slot=combobox-chip]:px-1.5 dark:has-aria-invalid:border-destructive/60 dark:has-aria-invalid:ring-destructive/60',
+          'flex min-h-9 items-center gap-1.5 rounded-sm border border-input bg-transparent bg-clip-padding px-1 py-1 text-sm shadow-xs transition-[color,box-shadow] focus-within:border-brand-500 focus-within:ring-1 focus-within:ring-brand-500 has-aria-invalid:border-destructive/60 has-aria-invalid:ring-1 has-aria-invalid:ring-destructive/60 has-[input:disabled]:cursor-not-allowed has-[input:disabled]:bg-gray-50 has-data-[slot=combobox-chip]:px-1.5 dark:has-aria-invalid:border-destructive/60 dark:has-aria-invalid:ring-destructive/60',
           wrap ? 'flex-wrap' : 'flex-nowrap overflow-hidden',
           className,
         )}
@@ -271,7 +271,7 @@ function ComboboxChip({
       data-variant={variant}
       className={cn(
         badgeVariants({ variant, outline: true }),
-        'w-fit max-w-full min-w-0 justify-center gap-1 py-0 text-xs whitespace-nowrap has-disabled:pointer-events-none has-disabled:cursor-not-allowed has-disabled:opacity-50 has-data-[slot=combobox-chip-remove]:pr-1',
+        'w-fit max-w-full min-w-0 justify-center gap-1 py-0 text-xs whitespace-nowrap has-disabled:pointer-events-none has-disabled:cursor-not-allowed has-disabled:opacity-50 has-data-[slot=combobox-chip-remove]:pr-1 data-disabled:cursor-not-allowed data-disabled:border-gray-300 data-disabled:bg-gray-100 data-disabled:text-gray-500',
         className,
       )}
       {...props}
@@ -300,8 +300,11 @@ function ComboboxChipsInput({
   className,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   children,
+  showClear = false,
   ...props
-}: ComboboxPrimitive.Input.Props) {
+}: ComboboxPrimitive.Input.Props & {
+  showClear?: boolean;
+}) {
   const chips = React.useContext(ComboboxChipsContext);
   const remainder = React.useContext(ComboboxChipsOverflowContext);
 
@@ -320,9 +323,13 @@ function ComboboxChipsInput({
       )}
       <ComboboxPrimitive.Input
         data-slot="combobox-chip-input"
-        className={cn('min-w-16 flex-1 outline-none', className)}
+        className={cn(
+          'min-w-16 flex-1 pl-2 outline-none disabled:cursor-not-allowed disabled:text-gray-500 disabled:placeholder:text-gray-400 [[data-slot=combobox-chip]~&]:pl-0',
+          className,
+        )}
         {...props}
       />
+      {showClear && <ComboboxClear className="shrink-0" disabled={props.disabled} />}
     </>
   );
 }

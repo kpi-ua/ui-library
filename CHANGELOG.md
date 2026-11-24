@@ -1,5 +1,11 @@
 # @kpi-ua/ui
 
+## 0.0.7
+
+### Patch Changes
+
+- Added MultiSelect component, fixed some issues with combobox
+
 ## 0.0.6
 
 ### Patch Changes
