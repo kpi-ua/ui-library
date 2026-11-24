@@ -245,7 +245,7 @@ function ComboboxChips({
       <ComboboxPrimitive.Chips
         data-slot="combobox-chips"
         className={cn(
-          'flex min-h-9 items-center gap-1.5 rounded-sm border border-gray-300 bg-transparent bg-clip-padding px-1 py-1 text-sm shadow-xs transition-[color,box-shadow] focus-within:border-brand-500 focus-within:ring-1 focus-within:ring-brand-500 has-aria-invalid:border-destructive/60 has-aria-invalid:ring-1 has-aria-invalid:ring-destructive/60 has-[input:disabled]:cursor-not-allowed has-[input:disabled]:bg-gray-50 has-data-[slot=combobox-chip]:px-1.5 dark:has-aria-invalid:border-destructive/60 dark:has-aria-invalid:ring-destructive/60',
+          'flex min-h-10 items-center gap-1.5 rounded-sm border border-gray-300 bg-transparent bg-clip-padding px-1 py-1.5 text-sm shadow-xs transition-[color,box-shadow] focus-within:border-brand-500 focus-within:ring-1 focus-within:ring-brand-500 has-aria-invalid:border-destructive/60 has-aria-invalid:ring-1 has-aria-invalid:ring-destructive/60 has-[input:disabled]:cursor-not-allowed has-[input:disabled]:bg-gray-50 has-data-[slot=combobox-chip]:px-1.5 dark:has-aria-invalid:border-destructive/60 dark:has-aria-invalid:ring-destructive/60',
           wrap ? 'flex-wrap' : 'flex-nowrap overflow-hidden',
           className,
         )}

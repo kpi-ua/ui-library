@@ -66,7 +66,7 @@
     "lint:fix": "oxlint . --fix",
     "format": "oxfmt --write .",
     "format:check": "oxfmt --check .",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6006 --no-open",
     "build-storybook": "storybook build",
     "test": "vitest run --passWithNoTests",
     "check-exports": "publint && attw --pack . --profile esm-only --entrypoints . ./ui ./icons ./hooks ./lib ./auth/server ./auth/next --ignore-rules internal-resolution-error",
