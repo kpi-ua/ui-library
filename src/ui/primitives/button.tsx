@@ -1,8 +1,11 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 import { Slot } from 'radix-ui';
+import { Slottable } from 'radix-ui/slot';
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';
+
+import { Spinner } from '../../icons';
 
 const buttonVariants = cva(
   'inline-flex cursor-pointer shadow-xs items-center justify-center gap-2 whitespace-nowrap rounded-sm text-sm font-semibold border border-solid border-transparent ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 [&_svg]:shrink-0',
@@ -28,17 +31,29 @@ const buttonVariants = cva(
         lg: "py-[9px] px-[16px] text-lg [&_svg:not([class*='size-'])]:size-[24px] leading-lg",
         xl: "py-[11px] px-[18px] text-lg [&_svg:not([class*='size-'])]:size-[24px] leading-lg",
       },
+      iconOnly: {
+        true: '',
+        false: '',
+      },
     },
+    compoundVariants: [
+      { size: 'sm', iconOnly: true, className: 'p-[7px]' },
+      { size: 'md', iconOnly: true, className: 'p-[9px]' },
+      { size: 'lg', iconOnly: true, className: 'p-[9px]' },
+      { size: 'xl', iconOnly: true, className: 'p-[11px]' },
+    ],
     defaultVariants: {
       variant: 'primary',
       size: 'md',
+      iconOnly: false,
     },
   },
 );
 
 type IconPosition = 'start' | 'end';
 
-export interface ButtonProps extends React.ComponentProps<'button'>, VariantProps<typeof buttonVariants> {
+export interface ButtonProps
+  extends React.ComponentProps<'button'>, Omit<VariantProps<typeof buttonVariants>, 'iconOnly'> {
   asChild?: boolean;
   loading?: boolean;
   icon?: React.ReactNode;
@@ -50,21 +65,37 @@ function Button({
   variant = 'primary',
   size = 'md',
   asChild = false,
+  loading = false,
+  icon,
+  iconPosition = 'start',
+  disabled,
+  children,
   ...props
-}: React.ComponentProps<'button'> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean;
-  }) {
+}: ButtonProps) {
   const Comp = asChild ? Slot.Root : 'button';
+  const iconOnly = !children && !!(icon || loading);
+
+  const iconAtPosition = (position: IconPosition) => {
+    if (loading) {
+      return position === 'start' ? <Spinner /> : null;
+    }
+
+    return icon && position === iconPosition ? icon : null;
+  };
 
   return (
     <Comp
       data-slot="button"
       data-variant={variant}
       data-size={size}
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(buttonVariants({ variant, size, iconOnly, className }))}
+      disabled={loading ? true : disabled}
       {...props}
-    />
+    >
+      {iconAtPosition('start')}
+      <Slottable>{children}</Slottable>
+      {iconAtPosition('end')}
+    </Comp>
   );
 }
 

@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import Spinner from '@/icons/Spinner.svg';
 import WarningCircle from '@/icons/WarningCircle.svg';
 
 import { Button } from './button';
@@ -21,6 +20,17 @@ const meta = {
       control: 'select',
       options: sizeOptions,
     },
+    icon: {
+      control: 'select',
+      options: ['none', 'warning'],
+      mapping: { none: undefined, warning: <WarningCircle /> },
+    },
+    iconPosition: {
+      control: 'inline-radio',
+      options: ['start', 'end'],
+    },
+    loading: { control: 'boolean' },
+    disabled: { control: 'boolean' },
   },
 } satisfies Meta<typeof Button>;
 
@@ -41,37 +51,41 @@ export const Variants: Story = {
   ),
 };
 
-export const IconLeft: Story = {
+export const IconStart: Story = {
+  args: { icon: <WarningCircle />, iconPosition: 'start' },
   render: (args) => (
     <div className="flex flex-wrap items-center gap-3">
       {variantOptions.map((v) => (
         <Button key={v} {...args} variant={v}>
-          <WarningCircle /> {v}
+          {v}
         </Button>
       ))}
     </div>
   ),
 };
 
-export const IconRight: Story = {
-  render: (args) => (
-    <div className="flex flex-wrap items-center gap-3">
-      {variantOptions.map((v) => (
-        <Button key={v} {...args} variant={v}>
-          {v} <WarningCircle />
-        </Button>
-      ))}
-    </div>
-  ),
+export const IconEnd: Story = {
+  args: { icon: <WarningCircle />, iconPosition: 'end' },
+  render: IconStart.render,
 };
 
 export const OnlyIcon: Story = {
+  args: { icon: <WarningCircle />, children: undefined },
   render: (args) => (
     <div className="flex flex-wrap items-center gap-3">
       {variantOptions.map((v) => (
-        <Button key={v} {...args} variant={v}>
-          <WarningCircle />
-        </Button>
+        <Button key={v} {...args} variant={v} aria-label={v} />
+      ))}
+    </div>
+  ),
+};
+
+export const OnlyIconSizes: Story = {
+  args: { icon: <WarningCircle />, children: undefined },
+  render: (args) => (
+    <div className="flex flex-wrap items-center gap-3">
+      {sizeOptions.map((s) => (
+        <Button key={s} {...args} size={s} />
       ))}
     </div>
   ),
@@ -90,11 +104,12 @@ export const Sizes: Story = {
 };
 
 export const SizesWithIcon: Story = {
+  args: { icon: <WarningCircle /> },
   render: (args) => (
     <div className="flex flex-wrap items-center gap-3">
       {sizeOptions.map((s) => (
         <Button key={s} {...args} size={s}>
-          <WarningCircle /> Button {s.toUpperCase()}
+          Button {s.toUpperCase()}
         </Button>
       ))}
     </div>
@@ -114,11 +129,12 @@ export const Disabled: Story = {
 };
 
 export const Loading: Story = {
+  args: { loading: true },
   render: (args) => (
     <div className="flex flex-wrap items-center gap-3">
       {variantOptions.map((v) => (
-        <Button key={v} {...args} variant={v} disabled>
-          <Spinner /> {v}
+        <Button key={v} {...args} variant={v}>
+          {v}
         </Button>
       ))}
     </div>
