@@ -1,5 +1,12 @@
 # @kpi-ua/ui
 
+## 0.0.8
+
+### Patch Changes
+
+- a644e2c: Added tabs, increasede height of all form components to 40px (as by mockups in most places)
+- 7d85fc6: Fixed border color of Combobox and all related components
+
 ## 0.0.7
 
 ### Patch Changes
