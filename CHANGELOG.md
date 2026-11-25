@@ -1,5 +1,12 @@
 # @kpi-ua/ui
 
+## 0.0.9
+
+### Patch Changes
+
+- deda437: Button: iconOnly, loading state and icon property for convenience
+- dbf9d38: Added password-input component
+
 ## 0.0.8
 
 ### Patch Changes
