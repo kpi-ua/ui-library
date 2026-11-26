@@ -13,4 +13,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
+export const WithValue: Story = { args: { defaultValue: 'Hello,\nthis is a message.' } };
+
+export const Invalid: Story = { args: { 'aria-invalid': true, defaultValue: 'Too short' } };
+
 export const Disabled: Story = { args: { disabled: true } };

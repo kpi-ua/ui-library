@@ -17,7 +17,7 @@ function RadioToggleGroupItem({ children, className, ...props }: React.Component
     <Label
       className={cn(
         'relative h-12 w-full cursor-pointer rounded-sm border border-gray-300 px-4 shadow-xs transition-[color,box-shadow] md:flex-1',
-        'has-data-[state=checked]:border-basic-blue has-data-[state=checked]:ring-1 has-data-[state=checked]:ring-basic-blue',
+        'has-data-[state=checked]:bg-accent has-data-[state=checked]:border-basic-blue has-data-[state=checked]:ring-1 has-data-[state=checked]:ring-basic-blue',
         'has-focus-visible:border-brand-500 has-focus-visible:ring-1 has-focus-visible:ring-brand-500',
         'in-aria-invalid:border-destructive/60 in-aria-invalid:ring-1 in-aria-invalid:ring-destructive/60',
         'has-disabled:cursor-not-allowed has-disabled:opacity-50',

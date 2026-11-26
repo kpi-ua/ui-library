@@ -1,5 +1,11 @@
 # @kpi-ua/ui
 
+## 0.0.11
+
+### Patch Changes
+
+- Fix background color for inputs and item
+
 ## 0.0.10
 
 ### Patch Changes
