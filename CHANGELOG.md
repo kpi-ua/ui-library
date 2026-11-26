@@ -1,5 +1,11 @@
 # @kpi-ua/ui
 
+## 0.0.10
+
+### Patch Changes
+
+- Added: radio-toggle-group, avatar, collapsible, dropdown-menu, navigation-menu, select, text-divider, toggle-group, toggle. Modified: upload and dialog
+
 ## 0.0.9
 
 ### Patch Changes

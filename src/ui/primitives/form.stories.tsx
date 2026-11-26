@@ -4,8 +4,10 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import Info from '@/icons/Info.svg';
+import type { MimeType, UploadingFile } from '@/types/common';
 
 import { DatePicker } from '../composed/date-picker';
+import { Upload, UploadItem } from '../composed/upload';
 import { Button } from './button';
 import { Checkbox } from './checkbox';
 import { Combobox, ComboboxContent, ComboboxEmpty, ComboboxInput, ComboboxItem, ComboboxList } from './combobox';
@@ -96,11 +98,24 @@ const profileSchema = z.object({
   university: z.string().min(1, 'Select a university.'),
   birthDate: z.string().min(1, 'Select a date of birth.'),
   plan: z.enum(['free', 'pro', 'enterprise'], 'Select a plan.'),
+  documents: z.array(z.instanceof(File)).min(1, 'Upload at least one document.'),
   notifications: z.boolean(),
   terms: z.boolean().refine((value) => value, 'You must accept the terms.'),
 });
 
 type ProfileValues = z.infer<typeof profileSchema>;
+
+const toUploadingFile = (file: File, index: number): UploadingFile => ({
+  id: `${file.name}-${index}`,
+  name: file.name,
+  size: file.size,
+  mimeType: file.type as MimeType,
+  status: 'uploading',
+  uploadProgress: 0,
+  uploadStatus: 'finished',
+  file,
+  controller: new AbortController(),
+});
 
 function ProfileForm({ defaultValues }: { defaultValues: Partial<ProfileValues> }) {
   const form = useForm<ProfileValues>({
@@ -186,6 +201,39 @@ function ProfileForm({ defaultValues }: { defaultValues: Partial<ProfileValues> 
         />
         <FormField
           control={form.control}
+          name="documents"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Documents</FormLabel>
+              <FormControl>
+                <Upload
+                  multiple
+                  title="Click to upload or drag and drop"
+                  description="JPG, PNG or PDF (max. 10 MB)"
+                  onSelect={(files) => {
+                    field.onChange([...(field.value ?? []), ...Array.from(files)]);
+                    field.onBlur();
+                  }}
+                />
+              </FormControl>
+              {(field.value ?? []).map((file, index) => (
+                <UploadItem
+                  key={`${file.name}-${index}`}
+                  mode="uploading"
+                  uploadStatus="finished"
+                  uploadingFile={toUploadingFile(file, index)}
+                  onDeleteClick={() => {
+                    field.onChange(field.value.filter((_, i) => i !== index));
+                    field.onBlur();
+                  }}
+                />
+              ))}
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="notifications"
           render={({ field }) => (
             <FormItem className="flex items-center justify-between gap-2">
@@ -221,11 +269,15 @@ function ProfileForm({ defaultValues }: { defaultValues: Partial<ProfileValues> 
 }
 
 export const WithMixedControls: Story = {
-  render: () => <ProfileForm defaultValues={{ university: '', birthDate: '', notifications: true, terms: false }} />,
+  render: () => (
+    <ProfileForm defaultValues={{ university: '', birthDate: '', documents: [], notifications: true, terms: false }} />
+  ),
 };
 
 export const MixedControlsWithErrors: Story = {
-  render: () => <ProfileForm defaultValues={{ university: '', birthDate: '', notifications: false, terms: false }} />,
+  render: () => (
+    <ProfileForm defaultValues={{ university: '', birthDate: '', documents: [], notifications: false, terms: false }} />
+  ),
   play: async ({ canvasElement }) => {
     canvasElement.querySelector('form')?.requestSubmit();
   },
