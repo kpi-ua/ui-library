@@ -1,5 +1,11 @@
 # @kpi-ua/ui
 
+## 0.0.12
+
+### Patch Changes
+
+- Fix form item alignment, export rich-text
+
 ## 0.0.11
 
 ### Patch Changes
