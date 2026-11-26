@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-/// <reference types="vite/types/importMeta.d.ts" />
 import type { ComponentType, SVGProps } from 'react';
 
 type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
