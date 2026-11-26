@@ -1,5 +1,11 @@
 # @kpi-ua/ui
 
+## 0.0.13
+
+### Patch Changes
+
+- Fix rich-text export
+
 ## 0.0.12
 
 ### Patch Changes
