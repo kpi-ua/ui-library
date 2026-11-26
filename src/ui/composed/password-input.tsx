@@ -30,4 +30,4 @@ const PasswordInput = ({ className, disabled, ref, ...props }: PasswordInputProp
 
 PasswordInput.displayName = 'PasswordInput';
 
-export default PasswordInput;
+export { PasswordInput };

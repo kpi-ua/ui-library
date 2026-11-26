@@ -18,3 +18,4 @@ export * from './item';
 export * from './popover';
 export * from './progress';
 export * from './tooltip';
+export * from './tabs';
