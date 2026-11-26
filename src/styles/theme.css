@@ -118,18 +118,25 @@
   --color-status-warning-100: rgb(var(--status-warning-100));
   --color-status-warning-50: rgb(var(--status-warning-50));
 
+  --color-status-success-800: rgb(var(--status-success-800));
   --color-status-success-700: rgb(var(--status-success-700));
   --color-status-success-600: rgb(var(--status-success-600));
+  --color-status-success-500: rgb(var(--status-success-500));
+  --color-status-success-400: rgb(var(--status-success-400));
   --color-status-success-300: rgb(var(--status-success-300));
   --color-status-success-200: rgb(var(--status-success-200));
   --color-status-success-100: rgb(var(--status-success-100));
   --color-status-success-50: rgb(var(--status-success-50));
 
-  --color-status-error-50: rgb(var(--status-error-50));
-  --color-status-error-100: rgb(var(--status-error-100));
-  --color-status-error-200: rgb(var(--status-error-200));
-  --color-status-error-600: rgb(var(--status-error-600));
+  --color-status-error-800: rgb(var(--status-error-800));
   --color-status-error-700: rgb(var(--status-error-700));
+  --color-status-error-600: rgb(var(--status-error-600));
+  --color-status-error-500: rgb(var(--status-error-500));
+  --color-status-error-400: rgb(var(--status-error-400));
+  --color-status-error-300: rgb(var(--status-error-300));
+  --color-status-error-200: rgb(var(--status-error-200));
+  --color-status-error-100: rgb(var(--status-error-100));
+  --color-status-error-50: rgb(var(--status-error-50));
 
   --color-other-purple: rgb(var(--other-purple));
   --color-other-purple-10: rgba(var(--other-purple-10));
@@ -251,21 +258,28 @@
   --status-warning-600: 220 104 3;
   --status-warning-500: 247 144 9;
   --status-warning-400: 253 176 34;
-  --status-warning-300: 244 176 1;
-  --status-warning-200: 251 219 100;
-  --status-warning-100: 253 246 202;
+  --status-warning-300: 254 200 75;
+  --status-warning-200: 254 223 137;
+  --status-warning-100: 254 240 199;
   --status-warning-50: 255 250 235;
+  --status-success-800: 8 93 58;
   --status-success-700: 6 118 71;
   --status-success-600: 7 148 85;
+  --status-success-500: 23 178 106;
+  --status-success-400: 71 205 137;
   --status-success-300: 42 193 103;
   --status-success-200: 171 239 198;
-  --status-success-100: 220 250 240;
+  --status-success-100: 220 250 230;
   --status-success-50: 236 253 243;
-  --status-error-50: 254 243 242;
-  --status-error-100: 254 228 226;
-  --status-error-200: 254 205 202;
-  --status-error-600: 217 45 32;
+  --status-error-800: 145 32 24;
   --status-error-700: 180 35 24;
+  --status-error-600: 217 45 32;
+  --status-error-500: 240 68 56;
+  --status-error-400: 249 112 102;
+  --status-error-300: 253 162 155;
+  --status-error-200: 254 205 202;
+  --status-error-100: 254 228 226;
+  --status-error-50: 254 243 242;
 
   --other-purple: 148 157 255;
   --other-purple-10: 148 157 255 0.01;

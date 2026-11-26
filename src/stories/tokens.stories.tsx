@@ -72,11 +72,11 @@ const colorGroups: { title: string; items: ColorToken[] }[] = [
   },
   {
     title: 'Status / success',
-    items: tokens('rgb', scale('status-success', [700, 600, 300, 200, 100, 50])),
+    items: tokens('rgb', scale('status-success', [800, 700, 600, 500, 400, 300, 200, 100, 50])),
   },
   {
     title: 'Status / error',
-    items: tokens('rgb', scale('status-error', [50, 100, 200, 600, 700])),
+    items: tokens('rgb', scale('status-error', [800, 700, 600, 500, 400, 300, 200, 100, 50])),
   },
   {
     title: 'Other',
